@@ -5,3 +5,11 @@ api-version: 1.17
 
 commands:
   deliveryman:
+    description: "Command for all commands!"
+    permission: delivery.start
+
+permissions:
+  delivery.start:
+    description: Gives person ability to start a game
+  delivery.play:
+    description: Gives a person the ability to play a game. They can't start a game with this permission
