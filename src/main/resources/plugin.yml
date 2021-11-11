@@ -1,0 +1,4 @@
+name: DeliveryPerson
+version: '${version}'
+main: me.perplexed.delivery.Main
+api-version: 1.17
