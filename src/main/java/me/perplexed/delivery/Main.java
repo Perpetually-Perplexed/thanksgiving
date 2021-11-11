@@ -9,8 +9,9 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         inst = this;
-        // Plugin startup logic
     }
+
+
 
     @Override
     public void onDisable() {
