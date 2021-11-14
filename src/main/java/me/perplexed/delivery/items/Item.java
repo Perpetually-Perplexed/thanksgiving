@@ -1,9 +1,16 @@
 package me.perplexed.delivery.items;
 
 import me.perplexed.delivery.Main;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.awt.*;
 
 public abstract class Item {
 
@@ -23,6 +30,18 @@ public abstract class Item {
 
     public ItemStack getCustomItem() {
         return new ItemStack(customItem);
+    }
+
+    public ItemStack getCustomItem(int amt) {
+        ItemStack item = getCustomItem();
+        item.setAmount(amt);
+        return item;
+    }
+
+    protected ItemStack item(Component name, Material mat, int amt) {
+        ItemStack stack = new ItemStack(mat,amt);
+        stack.editMeta(m -> m.displayName(name.decoration(TextDecoration.ITALIC,false)));
+        return stack;
     }
 
     public String getId() {
