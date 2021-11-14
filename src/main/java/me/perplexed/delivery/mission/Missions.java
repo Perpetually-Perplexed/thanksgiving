@@ -7,6 +7,9 @@ import org.bukkit.StructureType;
 import org.bukkit.inventory.ItemStack;
 
 public enum Missions {
+    IGLOO(1,300,StructureType.IGLOO,new ItemStack(Material.COOKED_CHICKEN,5)),
+    WOODLAND_MANSION(5,600,StructureType.WOODLAND_MANSION,new ItemStack(Material.SWEET_BERRIES,30)
+            ,new ItemStack(Material.COOKED_CHICKEN,16), Items.getInstance().DISCOUNT_TURKEY.getCustomItem()),
     VILLAGE(5,600,StructureType.VILLAGE,new ItemStack(Material.SWEET_BERRIES,30)
             ,new ItemStack(Material.COOKED_CHICKEN,16), Items.getInstance().DISCOUNT_TURKEY.getCustomItem());
 
