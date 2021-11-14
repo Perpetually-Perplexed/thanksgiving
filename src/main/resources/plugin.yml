@@ -1,12 +1,14 @@
 name: DeliveryPerson
-version: '${version}'
+version: 1.0-SNAPSHOT
 main: me.perplexed.delivery.Main
 api-version: 1.17
 
 commands:
-  deliveryman:
+  delivery:
     description: "Command for all commands!"
     permission: delivery.start
+  testparticel:
+    description: yes
 
 permissions:
   delivery.start:
