@@ -18,6 +18,10 @@ public class TxtUtils {
         return Component.text(msg).color(NamedTextColor.YELLOW);
     }
 
+    public static @NotNull Component white(String msg) {
+        return Component.text(msg).color(NamedTextColor.WHITE);
+    }
+
     public static @NotNull Component custom(String msg, TextColor clr) {
         return Component.text(msg).color(clr);
     }
