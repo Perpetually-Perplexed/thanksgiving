@@ -1,17 +1,18 @@
 package me.perplexed.delivery;
 
+import me.perplexed.delivery.mission.Game;
 import me.perplexed.delivery.utils.TxtUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.craftbukkit.v1_17_R1.CraftServer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class MegaCommand implements TabExecutor {
 
@@ -33,10 +34,9 @@ public class MegaCommand implements TabExecutor {
             return true;
         }
 
-        //todo add mission support
         switch (args[0].toLowerCase()) {
             case "solo" -> {
-
+                Game game = new Game(pl.getUniqueId());
             }
 
             case "team" -> {
@@ -45,13 +45,21 @@ public class MegaCommand implements TabExecutor {
                     return false;
                 }
 
+                List<UUID> teamsies = new ArrayList<>();
+
                 for (int i = 1;i < args.length; ++i) {
                     Player team = Bukkit.getPlayer(args[1]);
                     if (team == null) {
                         pl.sendMessage("\"" +args[1] + "\" is not a real player or is offline!");
                         return true;
                     }
+                    teamsies.add(team.getUniqueId());
                 }
+
+                UUID[] teamArr = new UUID[teamsies.size()];
+
+                teamsies.toArray(teamArr);
+                Game game = new Game(Game.GameType.TEAM,teamArr);
             }
 
             case "versus","vs" -> {
@@ -60,15 +68,21 @@ public class MegaCommand implements TabExecutor {
                     return false;
                 }
 
+                List<UUID> teamsies = new ArrayList<>();
+
                 for (int i = 1;i < args.length; ++i) {
                     Player team = Bukkit.getPlayer(args[1]);
                     if (team == null) {
                         pl.sendMessage("\"" +args[1] + "\" is not a real player or is offline!");
                         return true;
                     }
+                    teamsies.add(team.getUniqueId());
                 }
 
+                UUID[] teamArr = new UUID[teamsies.size()];
 
+                teamsies.toArray(teamArr);
+                Game game = new Game(Game.GameType.VERSUS, teamArr);
             }
 
         }
