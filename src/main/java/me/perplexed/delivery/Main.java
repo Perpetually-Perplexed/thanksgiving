@@ -1,13 +1,18 @@
 package me.perplexed.delivery;
 
+import me.perplexed.delivery.mission.Game;
 import me.perplexed.delivery.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class Main extends JavaPlugin {
 
     private static Main inst;
+    public final List<Game> gameList = new ArrayList<>();
     // temp
     private int taskId;
     
@@ -19,7 +24,7 @@ public final class Main extends JavaPlugin {
         getCommand("testparticel").setExecutor((sender, command, label, args) -> {
             if (!(sender instanceof Player pl)) return true;
             try {
-                taskId = Utils.spawnBeam(pl.getLocation(),Long.parseLong(args[0]),pl.getUniqueId());
+                taskId = Utils.spawnBeam(pl.getLocation(),Long.parseLong(args[0]));
             } catch (NumberFormatException e) {
                 Bukkit.getScheduler().cancelTask(taskId);
             }
